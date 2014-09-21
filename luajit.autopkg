@@ -1,20 +1,20 @@
 nuget {
-    nuspec {
+	nuspec {
 		id = luajit;
-        version : 2.0.3;
-        title: LuaJIT;
-        authors: {LuaJIT Developers};
-        owners: {LuaJIT Developers};
-        licenseUrl: "http://opensource.org/licenses/mit-license.php";
-        projectUrl: "http://luajit.org/luajit.html";
-        requireLicenseAcceptance: false;
-        summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua
-        programming language.";
+		version : 2.0.3;
+		title: LuaJIT;
+		authors: {LuaJIT Developers};
+		owners: {LuaJIT Developers};
+		licenseUrl: "http://opensource.org/licenses/mit-license.php";
+		projectUrl: "http://luajit.org/luajit.html";
+		requireLicenseAcceptance: false;
+		summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua
+		programming language.";
 
-        description: @"LuaJIT is a Just-In-Time Compiler (JIT) for the
-        Lua programming language. Lua is a powerful, dynamic and 
-        light-weight programming language. It may be embedded or used
-        as a general-purpose, stand-alone language.
+		description: @"LuaJIT is a Just-In-Time Compiler (JIT) for the
+		Lua programming language. Lua is a powerful, dynamic and 
+		light-weight programming language. It may be embedded or used
+		as a general-purpose, stand-alone language.
 
 		LuaJIT is Copyright © 2005-2014 Mike Pall, released under the
 		MIT open source license.
@@ -44,16 +44,58 @@ nuget {
 		range traditionally reserved for offline, static language
 		compilers.";
 
-        releaseNotes: "Release of LuaJIT 2.0.3 libraries.";
-        copyright: "Copyright 2014";
-        tags: { Lua, LuaJIT, native };
-    }
+		releaseNotes: "Release of LuaJIT 2.0.3 libraries.";
+		copyright: "Copyright 2014";
+		tags: { Lua, LuaJIT, native };
+	}
 
-    files {
-    	
-    }
+	files {
+		#defines {
+			SDK_LUAJIT = "luajit-src\";
+		}
 
-    targets {
-        Defines += HAS_LUAJITSDK;
-    }
+		include: {
+			"${SDK_LUAJIT}src\lua.hpp",
+			"${SDK_LUAJIT}src\lua.h",
+			"${SDK_LUAJIT}src\luaconf.h",
+			"${SDK_LUAJIT}src\luajit.h",
+			"${SDK_LUAJIT}src\lualib.h",
+			"${SDK_LUAJIT}src\lauxlib.h"
+		};
+
+		docs: {
+			"${SDK_LUAJIT}COPYRIGHT",
+			"${SDK_LUAJIT}doc\**\*"
+		};
+
+		lua: {
+            #add-all-files : Items.LuaJITFiles;
+            #destination : ${build_root}\lua;
+            "${SDK_LUAJIT}src\jit\**\*"
+        };
+
+		// these declarations of lib, symbols and bin folders only apply
+	    // to the project when:
+	    //        $(Platform) == x64
+	    //        $(PlatformToolset) == v100
+		[x64,v130] {
+	        lib: "${SDK_LUAJIT}src\lua51.lib";
+	        bin: {
+	        	"${SDK_LUAJIT}bin\lua51.dll",
+	        	"${SDK_LUAJIT}bin\luajit.exe"
+	        };
+		}
+	}
+
+	targets {
+		Defines += HAS_LuaJIT;
+		AfterBuild {
+            .Copy {
+                SourceFiles = "@(LuaJITFiles)";
+                DestinationFiles = "@(LuaJITFiles->'$(TargetDir)lua\jit\%(RecursiveDir)%(Filename)%(Extension)')";
+                SkipUnchangedFiles = true;
+                UseHardlinksIfPossible = true;
+            };
+        };
+	}
 }
