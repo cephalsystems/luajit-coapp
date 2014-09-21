@@ -7,7 +7,7 @@ nuget {
         owners: {LuaJIT Developers};
         licenseUrl: "http://opensource.org/licenses/mit-license.php";
         projectUrl: "http://luajit.org/luajit.html";
-        requireLicenseAcceptance:false;
+        requireLicenseAcceptance: false;
         summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua
         programming language.";
 
@@ -47,5 +47,13 @@ nuget {
         releaseNotes: "Release of LuaJIT 2.0.3 libraries.";
         copyright: "Copyright 2014";
         tags: { Lua, LuaJIT, native };
+    }
+
+    files {
+    	
+    }
+
+    targets {
+        Defines += HAS_LUAJITSDK;
     }
 }
