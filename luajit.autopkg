@@ -1,7 +1,7 @@
 nuget {
 	nuspec {
-		id = luajit;
-		version : 2.0.3;
+		id: luajit;
+		version: 2.0.3;
 		title: LuaJIT;
 		authors: {LuaJIT Developers};
 		owners: {LuaJIT Developers};
@@ -47,7 +47,7 @@ nuget {
 		releaseNotes: "Release of LuaJIT 2.0.3 libraries.";
 		copyright: "Copyright 2014";
 		tags: { Lua, LuaJIT, native };
-	}
+	};
 
 	files {
 		#defines {
@@ -69,33 +69,29 @@ nuget {
 		};
 
 		lua: {
-            #add-all-files : Items.LuaJITFiles;
-            #destination : ${build_root}\lua;
-            "${SDK_LUAJIT}src\jit\**\*"
-        };
+			#add-all-files: Items.LuaJITFiles;
+			#destination: ${build_root}\lua;
+			"${SDK_LUAJIT}src\jit\**\*"
+		};
 
-		// these declarations of lib, symbols and bin folders only apply
-	    // to the project when:
-	    //        $(Platform) == x64
-	    //        $(PlatformToolset) == v100
-		[x64,v130] {
-	        lib: "${SDK_LUAJIT}src\lua51.lib";
-	        bin: {
-	        	"${SDK_LUAJIT}bin\lua51.dll",
-	        	"${SDK_LUAJIT}bin\luajit.exe"
-	        };
+		[x64,dynamic] {
+			lib: "${SDK_LUAJIT}src\lua51.lib";
+			bin: {
+				"${SDK_LUAJIT}bin\lua51.dll",
+				"${SDK_LUAJIT}bin\luajit.exe"
+			};
 		}
-	}
+	};
 
 	targets {
 		Defines += HAS_LuaJIT;
 		AfterBuild {
-            .Copy {
-                SourceFiles = "@(LuaJITFiles)";
-                DestinationFiles = "@(LuaJITFiles->'$(TargetDir)lua\jit\%(RecursiveDir)%(Filename)%(Extension)')";
-                SkipUnchangedFiles = true;
-                UseHardlinksIfPossible = true;
-            };
-        };
-	}
+			.Copy {
+				SourceFiles = "@(LuaJITFiles)";
+				DestinationFiles = "@(LuaJITFiles->'$(TargetDir)lua\jit\%(RecursiveDir)%(Filename)%(Extension)')";
+				SkipUnchangedFiles = true;
+				UseHardlinksIfPossible = true;
+			};
+		};
+	};
 }
