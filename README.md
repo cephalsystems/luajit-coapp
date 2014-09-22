@@ -19,9 +19,16 @@ $ git status  # make sure the tag matches the version you want
 '''
 
 ## Building LuaJIT NuGet package
-In VS Developer Console
+In VS Developer Console (x86)
 '''bash
-> cd luajit-src
+> cd luajit-x86
+> cd src
+> msvcbuild
+'''
+
+In VS Developer Console (x64)
+'''bash
+> cd luajit-x64
 > cd src
 > msvcbuild
 '''
