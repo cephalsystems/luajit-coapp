@@ -18,7 +18,7 @@ $ cd luajit-src
 $ git status  # make sure the tag matches the version you want
 ```
 
-## Building LuaJIT NuGet package
+## Building LuaJIT NuGet packages.
 In VS Developer Console (x86)
 ```bash
 > cd luajit-x86
