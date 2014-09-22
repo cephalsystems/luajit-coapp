@@ -1,4 +1,4 @@
-# NuGet native package builder for LuaJIT
+# CoApp scripts for LuaJIT via NuGET
 
 Use this package to create NuGet packages that add LuaJIT to your
 Visual Studio projects!
