@@ -1,3 +1,6 @@
-[submodule "luajit-src"]
-	path = luajit-src
+[submodule "luajit-x86"]
+	path = luajit-x86
+	url = http://luajit.org/git/luajit-2.0.git
+[submodule "luajit-x64"]
+	path = luajit-x64
 	url = http://luajit.org/git/luajit-2.0.git

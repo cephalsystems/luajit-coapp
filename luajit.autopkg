@@ -44,42 +44,51 @@ nuget {
 		range traditionally reserved for offline, static language
 		compilers.";
 
-		releaseNotes: "Release of LuaJIT 2.0.3 libraries.";
+		releaseNotes: "Release of LuaJIT 2.0.3 libraries for VS2013.";
 		copyright: "Copyright 2014";
-		tags: { Lua, LuaJIT, native };
+		tags: { Lua, LuaJIT, native, VS2013, v120 };
 	};
 
 	files {
 		#defines {
-			SDK_LUAJIT = luajit-src\;
+			SDK_LUAJIT_X86 = luajit-x86\;
+			SDK_LUAJIT_X64 = luajit-x64\;
 		}
 
 		include: {
-			${SDK_LUAJIT}src\lua.hpp,
-			${SDK_LUAJIT}src\lua.h,
-			${SDK_LUAJIT}src\luaconf.h,
-			${SDK_LUAJIT}src\luajit.h,
-			${SDK_LUAJIT}src\lualib.h,
-			${SDK_LUAJIT}src\lauxlib.h
+			${SDK_LUAJIT_X86}src\lua.hpp,
+			${SDK_LUAJIT_X86}src\lua.h,
+			${SDK_LUAJIT_X86}src\luaconf.h,
+			${SDK_LUAJIT_X86}src\luajit.h,
+			${SDK_LUAJIT_X86}src\lualib.h,
+			${SDK_LUAJIT_X86}src\lauxlib.h
 		};
 
 		docs: {
-			${SDK_LUAJIT}COPYRIGHT,
-			${SDK_LUAJIT}doc\**\*
+			${SDK_LUAJIT_X86}COPYRIGHT,
+			${SDK_LUAJIT_X86}doc\**\*
 		};
 
 		// See: https://github.com/coapp/coapp.powershell/issues/27
 		lua: {
 			#add-all-files: Items.LuaJITFiles;
 			#destination: ${build_root}\lua;
-			${SDK_LUAJIT}src\jit\**\*
+			${SDK_LUAJIT_X86}src\jit\**\*
 		};
 
-		[x64,dynamic] {
-			lib: ${SDK_LUAJIT}src\lua51.lib;
+		[x64,v120] {
+			lib: ${SDK_LUAJIT_X64}src\lua51.lib;
 			bin: {
-				${SDK_LUAJIT}src\lua51.dll,
-				${SDK_LUAJIT}src\luajit.exe
+				${SDK_LUAJIT_X64}src\lua51.dll,
+				${SDK_LUAJIT_X64}src\luajit.exe
+			};
+		}
+
+		[x86,v120] {
+			lib: ${SDK_LUAJIT_X86}src\lua51.lib;
+			bin: {
+				${SDK_LUAJIT_X86}src\lua51.dll,
+				${SDK_LUAJIT_X86}src\luajit.exe
 			};
 		}
 	};
