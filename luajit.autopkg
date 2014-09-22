@@ -68,6 +68,7 @@ nuget {
 			${SDK_LUAJIT}doc\**\*
 		};
 
+		// See: https://github.com/coapp/coapp.powershell/issues/27
 		lua: {
 			#add-all-files: Items.LuaJITFiles;
 			#destination: ${build_root}\lua;
