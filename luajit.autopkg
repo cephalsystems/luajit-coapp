@@ -4,7 +4,7 @@ nuget {
 		version: 2.0.3;
 		title: LuaJIT;
 		authors: {LuaJIT Developers};
-		owners: {LuaJIT Developers};
+		owners: {Cephal Systems, Pras Velagapudi};
 		licenseUrl: "http://opensource.org/licenses/mit-license.php";
 		projectUrl: "http://luajit.org/luajit.html";
 		iconUrl: "http://i.imgur.com/HeIeYpE.png";
