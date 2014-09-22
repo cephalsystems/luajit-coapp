@@ -7,6 +7,7 @@ nuget {
 		owners: {LuaJIT Developers};
 		licenseUrl: "http://opensource.org/licenses/mit-license.php";
 		projectUrl: "http://luajit.org/luajit.html";
+		iconUrl: "http://i.imgur.com/HeIeYpE.png";
 		requireLicenseAcceptance: false;
 		summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua
 		programming language.";
@@ -26,7 +27,7 @@ nuget {
 		desktops up to server farms. It combines high flexibility with
 		high performance and an unmatched low memory footprint.
 
-		LuaJIT has been in continuous development since 2005. It's 
+		LuaJIT has been in continuous development since 2005. It is 
 		widely considered to be one of the fastest dynamic language
 		implementations. It has outperformed other dynamic languages
 		on many cross-language benchmarks since its first release - 
@@ -51,34 +52,34 @@ nuget {
 
 	files {
 		#defines {
-			SDK_LUAJIT = "luajit-src\";
+			SDK_LUAJIT = luajit-src\;
 		}
 
 		include: {
-			"${SDK_LUAJIT}src\lua.hpp",
-			"${SDK_LUAJIT}src\lua.h",
-			"${SDK_LUAJIT}src\luaconf.h",
-			"${SDK_LUAJIT}src\luajit.h",
-			"${SDK_LUAJIT}src\lualib.h",
-			"${SDK_LUAJIT}src\lauxlib.h"
+			${SDK_LUAJIT}src\lua.hpp,
+			${SDK_LUAJIT}src\lua.h,
+			${SDK_LUAJIT}src\luaconf.h,
+			${SDK_LUAJIT}src\luajit.h,
+			${SDK_LUAJIT}src\lualib.h,
+			${SDK_LUAJIT}src\lauxlib.h
 		};
 
 		docs: {
-			"${SDK_LUAJIT}COPYRIGHT",
-			"${SDK_LUAJIT}doc\**\*"
+			${SDK_LUAJIT}COPYRIGHT,
+			${SDK_LUAJIT}doc\**\*
 		};
 
 		lua: {
 			#add-all-files: Items.LuaJITFiles;
 			#destination: ${build_root}\lua;
-			"${SDK_LUAJIT}src\jit\**\*"
+			${SDK_LUAJIT}src\jit\**\*
 		};
 
 		[x64,dynamic] {
-			lib: "${SDK_LUAJIT}src\lua51.lib";
+			lib: ${SDK_LUAJIT}src\lua51.lib;
 			bin: {
-				"${SDK_LUAJIT}bin\lua51.dll",
-				"${SDK_LUAJIT}bin\luajit.exe"
+				${SDK_LUAJIT}src\lua51.dll,
+				${SDK_LUAJIT}src\luajit.exe
 			};
 		}
 	};
