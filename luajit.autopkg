@@ -9,8 +9,7 @@ nuget {
 		projectUrl: "http://luajit.org/luajit.html";
 		iconUrl: "http://i.imgur.com/HeIeYpE.png";
 		requireLicenseAcceptance: false;
-		summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua
-		programming language.";
+		summary: "LuaJIT is a Just-In-Time Compiler (JIT) for the Lua programming language.";
 
 		description: @"LuaJIT is a Just-In-Time Compiler (JIT) for the
 		Lua programming language. Lua is a powerful, dynamic and 
