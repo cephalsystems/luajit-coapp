@@ -1,11 +1,14 @@
 # NuGet native package builder for LuaJIT
 
-Use this package to create NuGet packages to include LuaJIT in your
+Use this package to create NuGet packages that add LuaJIT to your
 Visual Studio projects!
 
 ## Updating LuaJIT version.
 '''bash
-$ cd luajit-src
+$ cd luajit-x86
+$ git checkout v2.0.3  # or whatever version you want
+$ cd ..
+$ cd luajit-x64
 $ git checkout v2.0.3  # or whatever version you want
 $ cd ..
 $ vi luajit.autopkg  # change version to match v2.0.3.
