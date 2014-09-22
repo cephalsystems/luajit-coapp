@@ -22,9 +22,10 @@ In VS Developer Console
 > cd src
 > msvcbuild
 '''
+
 In Powershell
 '''bash
-
+> Write-NuGetPackage .\luajit.autopkg
 '''
 
 ## Installing CoApp NuGet helper scripts.
