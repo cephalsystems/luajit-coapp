@@ -76,7 +76,7 @@ nuget {
 			${SDK_LUAJIT_X86}src\jit\**\*
 		};
 
-		[x64,v120] {
+		[x64,v120,dynamic] {
 			lib: ${SDK_LUAJIT_X64}src\lua51.lib;
 			bin: {
 				${SDK_LUAJIT_X64}src\lua51.dll,
@@ -84,17 +84,27 @@ nuget {
 			};
 		}
 
-		[x86,v120] {
+		[x64,v120,static] {
+			lib: ${SDK_LUAJIT_X64}src\lua51.lib;
+		}
+
+		[x86,v120,dynamic] {
 			lib: ${SDK_LUAJIT_X86}src\lua51.lib;
 			bin: {
 				${SDK_LUAJIT_X86}src\lua51.dll,
 				${SDK_LUAJIT_X86}src\luajit.exe
 			};
 		}
+
+		[x86,v120,static] {
+			lib: ${SDK_LUAJIT_X86}src\lua51.lib;
+		}
 	};
 
 	targets {
 		Defines += HAS_LuaJIT;
+
+		[dynamic]
 		AfterBuild {
 			.Copy {
 				SourceFiles = "@(LuaJITFiles)";
