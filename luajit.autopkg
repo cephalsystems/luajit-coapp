@@ -46,7 +46,7 @@ nuget {
 
 		releaseNotes: "Release of LuaJIT 2.0.3 libraries for VS2013.";
 		copyright: "Copyright 2014";
-		tags: { Lua, LuaJIT, native, VS2013, v120 };
+		tags: { Lua, LuaJIT, native, nativepackage, CoApp, VS2013, v120 };
 	};
 
 	files {
